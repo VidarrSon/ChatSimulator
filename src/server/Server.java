@@ -29,16 +29,19 @@ public class Server {
                 sendBroadcastMessage(new Message(MessageType.USER_ADDED, clientName));
                 sendListOfUsers(connection, clientName);
                 serverMainLoop(connection, clientName);
-            } catch (IOException e) {
-                ConsoleHelper.writeMessage("An error occurred while exchanging data with the remote address.");
-            } catch (ClassNotFoundException e) {
-                ConsoleHelper.writeMessage("An error occurred while exchanging data with the remote address.");
+            } catch (Exception e) {
+                ConsoleHelper.writeMessage("No connection with \"" + clientName + "\"");
             }
             if (clientName != null) {
                 connectionMap.remove(clientName);
                 sendBroadcastMessage(new Message(MessageType.USER_REMOVED, clientName));
+                ConsoleHelper.writeMessage("User \"" + clientName + "\" left the chat");
+                ConsoleHelper.writeMessage("Remote address connection " + socket.getRemoteSocketAddress() + " closed.");
             }
-            ConsoleHelper.writeMessage("Remote address connection closed.");
+            while (!ConsoleHelper.readString().equals("off")){
+                ConsoleHelper.writeMessage("Server shut down");
+                break;
+            }
         }
 
         private String serverHandshake(Connection connection) throws IOException, ClassNotFoundException {

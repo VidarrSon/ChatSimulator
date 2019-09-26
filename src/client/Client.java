@@ -80,11 +80,13 @@ public class Client {
         }
     }
 
+    // for now it is "localhost"
     protected String getServerAddress() {
         ConsoleHelper.writeMessage("Input server address:");
         return ConsoleHelper.readString();
     }
 
+    // should be equal the server's one
     protected int getServerPort() {
         ConsoleHelper.writeMessage("Input port address:");
         return ConsoleHelper.readInt();
