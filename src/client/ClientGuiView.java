@@ -38,6 +38,7 @@ public class ClientGuiView {
         });
     }
 
+    // for now it is "localhost"
     public String getServerAddress() {
         return JOptionPane.showInputDialog(
                 frame,
@@ -46,6 +47,7 @@ public class ClientGuiView {
                 JOptionPane.QUESTION_MESSAGE);
     }
 
+    // should be equal the server's one
     public int getServerPort() {
         while (true) {
             String port = JOptionPane.showInputDialog(
