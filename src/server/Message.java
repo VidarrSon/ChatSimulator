@@ -14,7 +14,7 @@ public class Message implements Serializable {
         return data;
     }
 
-    public Message(MessageType type) {
+    Message(MessageType type) {
         this.type = type;
         data = null;
     }

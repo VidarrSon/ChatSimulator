@@ -12,7 +12,7 @@ public class Server {
     private static class Handler extends Thread {
         private Socket socket;
 
-        public Handler(Socket socket) {
+        Handler(Socket socket) {
             this.socket = socket;
         }
 
@@ -37,10 +37,6 @@ public class Server {
                 sendBroadcastMessage(new Message(MessageType.USER_REMOVED, clientName));
                 ConsoleHelper.writeMessage("User \"" + clientName + "\" left the chat");
                 ConsoleHelper.writeMessage("Remote address connection " + socket.getRemoteSocketAddress() + " closed.");
-            }
-            while (!ConsoleHelper.readString().equals("off")){
-                ConsoleHelper.writeMessage("Server shut down");
-                break;
             }
         }
 
@@ -82,7 +78,7 @@ public class Server {
         }
     }
 
-    public static void sendBroadcastMessage(Message message) {
+    private static void sendBroadcastMessage(Message message) {
         for (String clientName : connectionMap.keySet()) {
             try {
                 connectionMap.get(clientName).send(message);

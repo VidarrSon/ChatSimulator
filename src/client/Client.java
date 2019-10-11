@@ -88,7 +88,7 @@ public class Client {
 
     // should be equal the server's one
     protected int getServerPort() {
-        ConsoleHelper.writeMessage("Input port address:");
+        ConsoleHelper.writeMessage("Input server port:");
         return ConsoleHelper.readInt();
     }
 
